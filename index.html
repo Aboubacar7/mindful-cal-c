@@ -18,62 +18,83 @@
             <div class="">
                 <div class="search-input">
                 <input type="text" class="btn-input " placeholder="search" aria-label="Calorie Goal" >
-                <button type="submit" class="calorie-goal">Calorie-Goal</button>
                 </div>
                 <table class="table-A"  align= "center" width="400" height="100">
-
-                    <tr bgcolor="grey">
-                        <th>Meal List</th>
-                        
-                    </tr>
-
-                    <tr bgcolor="lightblue" align="center">
-                        <td width="100">bkhc2e </td>
-                        
-                    </tr>
-
-                    <tr bgcolor="lightgrey" align="center">
-                        <td>kh w3c </td>
-                       
-                    </tr>
+                    <thead>
+                        <tr bgcolor="grey">
+                            <th>Meal List</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr bgcolor="lightblue" align="center">
+                            <td width="100">bkhc2e </td>
+                            
+                        </tr>
+    
+                        <tr bgcolor="lightgrey" align="center">
+                            <td>kh w3c </td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                <button type="submit" class="calorie-goal">Calculate Portions!</button>
+                <table class="saved-meals"  align= "center" width="400" height="100">
+                    <thead>
+                        <tr bgcolor="grey" >
+                            <th>Saved Meals</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
                 </table>
             </div>
             <div class="">
                 <table class="table-B"  width="400" height="100">
-                    <tr bgcolor="grey" bgcolor="black" align="center">
+                    <thead>
+                        <tr bgcolor="grey" bgcolor="black" align="center">
 
-                        <th>Qty</th>
-                        <th>Unit</th>
-                        <th>Food</th>
-                        <th>Cal</th>
-
-                    </tr>
-                    <tr bgcolor="lightgrey" align="center">
-                        <td>kew</td>
-                        <td>eck</td>
-                        <td>eee</td>
-                        <td>eee</td>
-                    </tr>
-                    <tr bgcolor="lightgrey" align="center">
-                        <td>kew</td>
-                        <td>eck</td>
-                        <td>eee</td>
-                        <td>eee</td>
-                    </tr>
+                            <th>Qty</th>
+                            <th>Unit</th>
+                            <th>Food</th>
+                            <th>Cal</th>
+    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr bgcolor="lightgrey" align="center">
+                            <td>kew</td>
+                            <td>eck</td>
+                            <td>eee</td>
+                            <td>eee</td>
+                        </tr>
+                        <tr bgcolor="lightgrey" align="center">
+                            <td>kew</td>
+                            <td>eck</td>
+                            <td>eee</td>
+                            <td>eee</td>
+                        </tr>
+                    </tbody>
+                    
 
                 </table>
                 <div class="btn">
                     <button type="button" class="portion-size" id="portion">Portion Size</button>
 
-                    <button type="button" class="meal-url" id="meal">Meal URL</button>
+                    <button type="button" class="display-recipe" id="meal">Display Recipe!</button>
+                    <textarea class="recipe" ></textarea>
                 </div>
+                
             </div>
 
 
         </div>
 
     </main>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
