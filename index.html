@@ -4,20 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Mindful Cal C </title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
 </head>
 
 <body>
-    <header class="header">
-        <h1> Mindful Cal C</h1>
+    <header class="header container-fluid center-align teal accent-3">
+        <h1>Mindful (Cal)c</h1>
     </header>
-    <main class="container">
-        <div class="content">
-            <div class="">
+
+    <main class="container-fluid">
+        <div id="content" class="row">
+
+            <!-- Calorie Input Field -->
+            <div class="col s6">
                 <div class="search-input">
-                <input type="text" class="btn-input " placeholder="search" aria-label="Calorie Goal" >
-                <button type="submit" class="calorie-goal">Calorie-Goal</button>
+                    <div class="row">
+                        <form id="calorie-goal">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                    <label for="textarea1">Type Your Calorie Goal Here</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Meal List Card -->
+                <div class="meal-list card small">
+                    <div class="white">
+                        <div class="card-title center-align"><h4>Meal List</h4></div>
+                        <div class="collection">
+                            <a class="collection-item">Meal Name</a>
+                            <a class="collection-item active">Meal Name</a>
+                            <a class="collection-item">Meal Name</a>
+                            <a class="collection-item">Meal Name</a>
+                            <a class="collection-item">Meal Name</a>
+                            <a class="collection-item">Meal Name</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section center-align">
+                    <a class="waves-effect waves-light btn">
+                        Calculate Portions</a>
+                </div>
+            </div>
+
+            <div class="col s6">
+                <table class="ingredients-table striped">
+                    <thead>
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Food Item</th>
+                            <th>Calories</th>
+                        </tr>
+                    </thead>
+                
                 </div>
                 <table class="table-A"  align= "center" width="400" height="100">
 
@@ -37,42 +87,46 @@
                     </tr>
                 </table>
             </div>
-            <div class="">
-                <table class="table-B"  width="400" height="100">
-                    <tr bgcolor="grey" bgcolor="black" align="center">
 
-                        <th>Qty</th>
-                        <th>Unit</th>
-                        <th>Food</th>
-                        <th>Cal</th>
 
-                    </tr>
-                    <tr bgcolor="lightgrey" align="center">
-                        <td>kew</td>
-                        <td>eck</td>
-                        <td>eee</td>
-                        <td>eee</td>
-                    </tr>
-                    <tr bgcolor="lightgrey" align="center">
-                        <td>kew</td>
-                        <td>eck</td>
-                        <td>eee</td>
-                        <td>eee</td>
-                    </tr>
 
+                    <tbody>
+                        <tr>
+                            <td>Alvin</td>
+                            <td>Eclair</td>
+                            <td>$0.87</td>
+                            <td>$0.87</td>
+                        </tr>
+                        <tr>
+                            <td>Alan</td>
+                            <td>Jellybean</td>
+                            <td>$3.76</td>
+                            <td>$3.76</td>
+                        </tr>
+                        <tr>
+                            <td>Jonathan</td>
+                            <td>Lollipop</td>
+                            <td>$7.00</td>
+                            <td>$7.00</td>
+                        </tr>
+                    </tbody>
                 </table>
-                <div class="btn">
-                    <button type="button" class="portion-size" id="portion">Portion Size</button>
-
-                    <button type="button" class="meal-url" id="meal">Meal URL</button>
-                </div>
+                <div class="section center-align">
+                <a id="portion-size" class="waves-effect waves-light btn ">Portion Size</a></div>
+                <div class="section center-align">
+                <a id="show-recipe" class="waves-effect waves-light btn">Show me the recipe!</a></div>
+                <div class="section center-align">
+                <a id="save-recipes" class="waves-effect waves-light btn">Save Recipe</a></div>
             </div>
 
 
         </div>
 
     </main>
-<script src="script.js"></script>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

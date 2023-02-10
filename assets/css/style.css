@@ -1,0 +1,16 @@
+.search-input {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.meal-list {
+    margin-left: 2em;
+    margin-right: 2em;
+    height: 300px;
+    overflow: auto;
+}
+
+.ingredients-table {
+    margin: 2em;
+    margin-top: 8em;
+}
