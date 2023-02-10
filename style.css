@@ -16,8 +16,12 @@ body{
     margin-top: 5rem;
     padding-left: 1em;
 }
+.btn-input{
+    background-color: bisque;
+    font-size: x-large;
+}
 .calorie-goal{
-    margin-left: 6em;
+    margin-left: 1em;
     margin-bottom: 0.5em;
     font-size: x-large;
     background-color: rgb(175, 142, 150);
