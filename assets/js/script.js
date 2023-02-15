@@ -59,38 +59,24 @@ let configuredData = [];
 mealDropdown.innerHTML = "";
     for (let i = 0; i < results.length; i++) {
 
-        mealDropdown.innerHTML += `<a class="collection-item" measure1="${results[i].strMeasure1}" ingredient1="${results[i].strIngredient1}" >${results[i].strMeal}</a>`
+        mealDropdown.innerHTML += `<a>${results[i].strMeal}</a>`;
         
          let obj = {meal:results[i].strMeal}
         for(let y = 0; y < 20; y++){
-            if(results[i][`strIngredient${y}`] && results[i][`strMeasure${y}`]){
-            let obj = {ingredient: results[i][`strIngredient${y}`], measure: results[i][`strMeasure${y}`]}
+            if(results[i][`strMeasure${y}`] && results[i][`strIngredient${y}`]){
+            let obj = {measure: results[i][`strMeasure${y}`], ingredient: results[i][`strIngredient${y}`]}
             configuredData.push(obj)
             }
-
         }
-        obj["data"] = configuredData
-        configuredData = []
-        totalArray.push(obj)
-        
+        obj["data"] = configuredData;
+        configuredData = [];
+        totalArray.push(obj);
     }
-    console.log(totalArray)
+    console.log(totalArray);
 }
-// the measure and ingredient are being stored as an attribute to the meal name.
 
-mealDropdown.addEventListener("click", function(e) {
 
-    // recipeTitleEl.textContent = "";
-    // let recipeName = document.createElement('h4'); 
-    // recipeName.textContent = data.strMeal;
-    // recipeTitleEl.append(recipeName);
-    // 
-    // for (i = 0; i < ingredientsEl.length; i++) {
-
-    //     ingredientsEl[i].textContent = "";
-    //     let ingredient = document.createElement('li');
-    //     ingredient.textContent = data.strIngredient[i];
-    // } 
+calcCaloriesBtn.addEventListener("click", function(e) {
 
     let measure = e.target.getAttribute("measure1");
     measure = measure.replace(" ","%20");
@@ -105,17 +91,12 @@ mealDropdown.addEventListener("click", function(e) {
     fetch(requestUrl2)
     .then(resp => resp.json())
     .then(data => showTable(data))
-
 })
 
-calcCaloriesBtn.addEventListener("click", function () {
-
-})
-
-function showTable(data){
+function showTable(data) {
 console.log(data);
 
-tableBody.innerHTML=""
+tableBody.innerHTML="";
 tableBody.innerHTML+=`
 <tr>
 <td>${data.totalWeight}</td>
@@ -126,11 +107,16 @@ tableBody.innerHTML+=`
 `
 }
 
-collections.addEventListener("click", function(event) {
+mealDropdown.addEventListener("click", function(event) {
 console.log(event.target.innerHTML);
 
 var currentMeal = event.target.innerText;
 var currentMealDetails = "";
+
+    recipeTitleEl.textContent = "";
+    let recipeName = document.createElement('h5'); 
+    recipeName.textContent = currentMeal;
+    recipeTitleEl.append(recipeName);
 
 for (let i = 0; i < totalArray.length; i++){
 
@@ -139,5 +125,5 @@ for (let i = 0; i < totalArray.length; i++){
     currentMealDetails = totalArray[i];
 }
 }
-     console.log(currentMealDetails)
+     console.log(currentMealDetails);
 })
