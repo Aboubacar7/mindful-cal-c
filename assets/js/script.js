@@ -18,7 +18,6 @@ saveRecipesBtn.addEventListener("click", function () {
     localStorage.setItem("recipes", JSON.stringify(recipeHistory));
 })
 
-var apiKey = 'PmYKMh41zdKaVKHl5skTd8vvNpf065hiw6dkL8RV';
 let results = new Array;
 var results1 = new Array;
 
@@ -29,8 +28,7 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=a`)
     .then(function (data) {
         console.log(data);
         results = (data.meals);
-        console.log(results);
-             
+        console.log(results);       
     });
 
 fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
@@ -42,16 +40,15 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
         results1 = (data.meals);
 
         let totalResults = results.concat(results1);
-        console.log(results);
+        console.log(totalResults);
         showMeals(totalResults);
     });
 
 function showMeals(results) {
     mealDropdown.innerHTML = "";
-
     for (let i = 0; i < results.length; i++) {
-
-        mealDropdown.innerHTML = `<a class="collection-item" measure1="${results[i].strMeasure1}" ingredient1="${results[i].strIngredient1}">${results[i].strMeal}</a>`
+        
+        mealDropdown.innerHTML += `<a class="collection-item" measure1="${results[i].strMeasure1}" ingredient1="${results[i].strIngredient1}">${results[i].strMeal}</a>`
     }
 }
 
