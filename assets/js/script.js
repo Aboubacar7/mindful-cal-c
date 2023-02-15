@@ -118,7 +118,7 @@ var currentMealDetails = "";
     recipeName.textContent = currentMeal;
     recipeTitleEl.append(recipeName);
 
-for (let i = 0; i < totalArray.length; i++){
+for (let i = 0; i < totalArray.length; i++) {
 
     if (currentMeal.trim() === totalArray[i].meal.trim()) {
     
@@ -127,3 +127,14 @@ for (let i = 0; i < totalArray.length; i++){
 }
      console.log(currentMealDetails);
 })
+
+for (let i = 0; i<currentMealDetails.data.length; i++) {
+    document.querySelector("table").innerHTML +=`
+    <tr>
+    <td>${currentMealDetails.data[i].measure}</td>
+    <td>${currentMealDetails.data[i].ingredient}</td>
+    </tr>
+    `
+}
+
+console.log(currentMealDetails)
