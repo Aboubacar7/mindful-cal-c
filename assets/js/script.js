@@ -14,6 +14,8 @@ let recipeHistory = JSON.parse(localStorage.getItem("recipes")) || [];
 let tableBody = document.getElementById("tableBody");
 
 showRecipeBtn.addEventListener("click", function () {
+    let recipeCard = document.querySelector(".recipe-card");
+    recipeCard.removeAttribute("hide");
 
 })
 
@@ -76,12 +78,12 @@ mealDropdown.innerHTML = "";
 }
 
 
-calcCaloriesBtn.addEventListener("click", function(e) {
+calcCaloriesBtn.addEventListener("click", function() {
 
-    let measure = e.target.getAttribute("measure1");
+    let measure = currentMealDetails.data[i].measure;
     measure = measure.replace(" ","%20");
 
-    let ingredient1 = e.target.getAttribute("ingredient1");
+    let ingredient1 = currentMealDetails.data[i].ingredient;
     ingredient1 = ingredient1.replace(" ","%20");
 
     let ingredient = measure+"%2C"+ingredient1;
@@ -125,8 +127,6 @@ for (let i = 0; i < totalArray.length; i++) {
     currentMealDetails = totalArray[i];
 }
 }
-     console.log(currentMealDetails);
-})
 
 for (let i = 0; i<currentMealDetails.data.length; i++) {
     document.querySelector("table").innerHTML +=`
@@ -138,3 +138,4 @@ for (let i = 0; i<currentMealDetails.data.length; i++) {
 }
 
 console.log(currentMealDetails)
+})
