@@ -14,6 +14,8 @@ let recipeHistory = JSON.parse(localStorage.getItem("recipes")) || [];
 let tableBody = document.getElementById("tableBody");
 
 showRecipeBtn.addEventListener("click", function () {
+    let recipeCard = document.querySelector(".recipe-card");
+    recipeCard.removeAttribute("hide");
 
 })
 
@@ -59,43 +61,29 @@ let configuredData = [];
 mealDropdown.innerHTML = "";
     for (let i = 0; i < results.length; i++) {
 
-        mealDropdown.innerHTML += `<a class="collection-item" measure1="${results[i].strMeasure1}" ingredient1="${results[i].strIngredient1}" >${results[i].strMeal}</a>`
+        mealDropdown.innerHTML += `<a>${results[i].strMeal}</a>`;
         
          let obj = {meal:results[i].strMeal}
         for(let y = 0; y < 20; y++){
-            if(results[i][`strIngredient${y}`] && results[i][`strMeasure${y}`]){
-            let obj = {ingredient: results[i][`strIngredient${y}`], measure: results[i][`strMeasure${y}`]}
+            if(results[i][`strMeasure${y}`] && results[i][`strIngredient${y}`]){
+            let obj = {measure: results[i][`strMeasure${y}`], ingredient: results[i][`strIngredient${y}`]}
             configuredData.push(obj)
             }
-
         }
-        obj["data"] = configuredData
-        configuredData = []
-        totalArray.push(obj)
-        
+        obj["data"] = configuredData;
+        configuredData = [];
+        totalArray.push(obj);
     }
-    console.log(totalArray)
+    console.log(totalArray);
 }
-// the measure and ingredient are being stored as an attribute to the meal name.
 
-mealDropdown.addEventListener("click", function(e) {
 
-    // recipeTitleEl.textContent = "";
-    // let recipeName = document.createElement('h4'); 
-    // recipeName.textContent = data.strMeal;
-    // recipeTitleEl.append(recipeName);
-    // 
-    // for (i = 0; i < ingredientsEl.length; i++) {
+calcCaloriesBtn.addEventListener("click", function() {
 
-    //     ingredientsEl[i].textContent = "";
-    //     let ingredient = document.createElement('li');
-    //     ingredient.textContent = data.strIngredient[i];
-    // } 
-
-    let measure = e.target.getAttribute("measure1");
+    let measure = currentMealDetails.data[i].measure;
     measure = measure.replace(" ","%20");
 
-    let ingredient1 = e.target.getAttribute("ingredient1");
+    let ingredient1 = currentMealDetails.data[i].ingredient;
     ingredient1 = ingredient1.replace(" ","%20");
 
     let ingredient = measure+"%2C"+ingredient1;
@@ -105,17 +93,12 @@ mealDropdown.addEventListener("click", function(e) {
     fetch(requestUrl2)
     .then(resp => resp.json())
     .then(data => showTable(data))
-
 })
 
-calcCaloriesBtn.addEventListener("click", function () {
-
-})
-
-function showTable(data){
+function showTable(data) {
 console.log(data);
 
-tableBody.innerHTML=""
+tableBody.innerHTML="";
 tableBody.innerHTML+=`
 <tr>
 <td>${data.totalWeight}</td>
@@ -132,23 +115,27 @@ console.log(event.target.innerHTML);
 var currentMeal = event.target.innerText;
 var currentMealDetails = "";
 
-for (let i = 0; i < totalArray.length; i++){
+    recipeTitleEl.textContent = "";
+    let recipeName = document.createElement('h5'); 
+    recipeName.textContent = currentMeal;
+    recipeTitleEl.append(recipeName);
+
+for (let i = 0; i < totalArray.length; i++) {
 
     if (currentMeal.trim() === totalArray[i].meal.trim()) {
     
     currentMealDetails = totalArray[i];
 }
 }
-for(let i = 0; i<currentMealDetails.data.length; i++){
+
+for (let i = 0; i<currentMealDetails.data.length; i++) {
     document.querySelector("table").innerHTML +=`
     <tr>
-    <td>${currentMealDetails.data[i].ingredient}</td>
     <td>${currentMealDetails.data[i].measure}</td>
-
+    <td>${currentMealDetails.data[i].ingredient}</td>
     </tr>
     `
 }
-     console.log(currentMealDetails)
+
+console.log(currentMealDetails)
 })
-
-
