@@ -1,6 +1,44 @@
-.search-input {
-    margin-left: 2em;
-    margin-right: 2em;
+ul {
+    list-style: none;
+    width: 200px;
+}
+
+ul li {
+    display: inline-block;
+    position: relative;
+}
+
+ul li a {
+    display: block;
+    padding: 20px 25px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    background: white;
+    width: 300px;
+}
+
+ul li ul.dropdown li {
+    display: block;
+}
+
+ul li ul.dropdown {
+    width: 100%;
+    position: absolute;
+    z-index: 16;
+    display: none;
+}
+
+ul li a:hover {
+    background: rgb(63, 236, 170);
+
+}
+
+ul li:hover ul.dropdown {
+    display: block;
+    height: 200px;
+    overflow: auto;
 }
 
 .meal-list {

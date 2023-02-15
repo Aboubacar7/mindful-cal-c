@@ -21,32 +21,38 @@
     <main class="container-fluid">
         <div id="content" class="row">
 
-            <!-- Calorie Input Field -->
+
             <div class="col s6">
-                <div class="search-input">
-                    <div class="row">
-                        <form>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="calorie-goal" class="materialize-textarea"></textarea>
-                                    <label for="textarea1">Type Your Calorie Goal Here</label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <!-- Meal List -->
+                <ul>
+                    <li><a href="#">Select a Meal<i class="material-icons right">arrow_drop_down</i></a>
+                        <ul id="dropdown" class="dropdown">
+                            <li><a href="#">Meal</a></li>
+                            <li><a href="#">Meal</a></li>
+                            <li><a href="#">Meal</a></li>
+                            <li><a href="#">Meal</a></li>
+                            <li><a href="#">Meal</a></li>
+                            <li><a href="#">Meal</a></li>
+                            <li><a href="#">Meal</a></li>
+                            <li><a href="#">Meal</a></li>
+                            <li><a href="#">Meal</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
                 <!-- Meal List Card -->
                 <div class="meal-list card small">
                     <div class="white">
-                        <div class="card-title center-align"><h4>Meal List</h4></div>
+                        <div class="card-title center-align">
+                            <h4>Meal Name</h4>
+                        </div>
                         <div class="collection">
-                            <a class="collection-item">Meal Name</a>
-                            <a class="collection-item active">Meal Name</a>
-                            <a class="collection-item">Meal Name</a>
-                            <a class="collection-item">Meal Name</a>
-                            <a class="collection-item">Meal Name</a>
-                            <a class="collection-item">Meal Name</a>
+                            <a class="collection-item">Ingredient</a>
+                            <a class="collection-item active">Ingredient</a>
+                            <a class="collection-item">Ingredient</a>
+                            <a class="collection-item">Ingredient</a>
+                            <a class="collection-item">Ingredient</a>
+                            <a class="collection-item">Ingredient</a>
                         </div>
                     </div>
                 </div>
@@ -54,6 +60,12 @@
                 <div id="calculate-calories" class="section center-align">
                     <a class="waves-effect waves-light btn">
                         Calculate Calories</a>
+                </div>
+                <div class="section center-align">
+                    <a id="show-recipe" class="waves-effect waves-light btn">Show me the recipe!</a>
+                </div>
+                <div class="section center-align">
+                    <a id="save-recipes" class="waves-effect waves-light btn">Save Recipe</a>
                 </div>
             </div>
 
@@ -63,33 +75,32 @@
                         <tr>
                             <th>Quantity</th>
                             <th>Unit</th>
+                            <th>Ingredient</th>
                             <th>Calories</th>
                         </tr>
                     </thead>
-<tbody id="tableBody">
+                    <tbody id="tableBody">
                         <tr>
                             <td>Alvin</td>
                             <td>Eclair</td>
+                            <td>$0.87</td>
                             <td>$0.87</td>
                         </tr>
                         <tr>
                             <td>Alan</td>
                             <td>Jellybean</td>
                             <td>$3.76</td>
+                            <td>$3.76</td>
                         </tr>
                         <tr>
                             <td>Jonathan</td>
                             <td>Lollipop</td>
                             <td>$7.00</td>
+                            <td>$7.00</td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="section center-align">
-                <a id="portion-size" class="waves-effect waves-light btn ">Portion Size</a></div>
-                <div class="section center-align">
-                <a id="show-recipe" class="waves-effect waves-light btn">Show me the recipe!</a></div>
-                <div class="section center-align">
-                <a id="save-recipes" class="waves-effect waves-light btn">Save Recipe</a></div>
+
             </div>
         </div>
     </main>
