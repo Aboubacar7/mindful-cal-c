@@ -19,6 +19,7 @@ ul li a {
     width: 300px;
 }
 
+
 ul li ul.dropdown li {
     display: block;
 }
@@ -47,8 +48,17 @@ ul li:hover ul.dropdown {
     height: 300px;
     overflow: auto;
 }
-
+  
 .ingredients-table {
     margin: 2em;
     margin-top: 8em;
+}
+
+.hide {
+    display: none;
+
+}
+
+.show {
+    display: contents;
 }
