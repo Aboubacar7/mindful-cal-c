@@ -126,7 +126,7 @@ tableBody.innerHTML+=`
 `
 }
 
-collections.addEventListener("click", function(event) {
+mealDropdown.addEventListener("click", function(event) {
 console.log(event.target.innerHTML);
 
 var currentMeal = event.target.innerText;
@@ -139,5 +139,16 @@ for (let i = 0; i < totalArray.length; i++){
     currentMealDetails = totalArray[i];
 }
 }
+for(let i = 0; i<currentMealDetails.data.length; i++){
+    document.querySelector("table").innerHTML +=`
+    <tr>
+    <td>${currentMealDetails.data[i].ingredient}</td>
+    <td>${currentMealDetails.data[i].measure}</td>
+
+    </tr>
+    `
+}
      console.log(currentMealDetails)
 })
+
+
