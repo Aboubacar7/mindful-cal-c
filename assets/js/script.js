@@ -53,16 +53,14 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
 
 
 function showMeals(results) {
-
-    //demo
     
-let configuredData = []
-//
-    collections.innerHTML = ""
+let configuredData = [];
+
+mealDropdown.innerHTML = "";
     for (let i = 0; i < results.length; i++) {
 
-        collections.innerHTML += `<a class="collection-item" measure1="${results[i].strMeasure1}" ingredient1="${results[i].strIngredient1}" >${results[i].strMeal}</a>`
-        //demo
+        mealDropdown.innerHTML += `<a class="collection-item" measure1="${results[i].strMeasure1}" ingredient1="${results[i].strIngredient1}" >${results[i].strMeal}</a>`
+        
          let obj = {meal:results[i].strMeal}
         for(let y = 0; y < 20; y++){
             if(results[i][`strIngredient${y}`] && results[i][`strMeasure${y}`]){
@@ -74,22 +72,10 @@ let configuredData = []
         obj["data"] = configuredData
         configuredData = []
         totalArray.push(obj)
-        //
-
-
-
-
-
-    mealDropdown.innerHTML = "";
-    for (let i = 0; i < results.length; i++) {
         
-        mealDropdown.innerHTML += `<a class="collection-item" measure1="${results[i].strMeasure1}" ingredient1="${results[i].strIngredient1}">${results[i].strMeal}</a>`
-
     }
     console.log(totalArray)
 }
-
-
 // the measure and ingredient are being stored as an attribute to the meal name.
 
 mealDropdown.addEventListener("click", function(e) {
@@ -105,9 +91,6 @@ mealDropdown.addEventListener("click", function(e) {
     //     let ingredient = document.createElement('li');
     //     ingredient.textContent = data.strIngredient[i];
     // } 
-
-
-
 
     let measure = e.target.getAttribute("measure1");
     measure = measure.replace(" ","%20");
@@ -143,16 +126,17 @@ tableBody.innerHTML+=`
 `
 }
 
-collections.addEventListener("click", function(event){
-console.log(event.target.innerHTML)
-var currentMeal = event.target.innerText
-var currentMealDetails = ""
-for ( let i = 0; i < totalArray.length; i++){
+collections.addEventListener("click", function(event) {
+console.log(event.target.innerHTML);
 
+var currentMeal = event.target.innerText;
+var currentMealDetails = "";
 
-if (currentMeal.trim() === totalArray[i].meal.trim()){
+for (let i = 0; i < totalArray.length; i++){
+
+    if (currentMeal.trim() === totalArray[i].meal.trim()) {
     
-    currentMealDetails = totalArray[i]
+    currentMealDetails = totalArray[i];
 }
 }
      console.log(currentMealDetails)
