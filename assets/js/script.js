@@ -139,8 +139,11 @@ for (let i = 0; i < totalArray.length; i++){
     currentMealDetails = totalArray[i];
 }
 }
+document.querySelector("table").innerHTML =""
 for(let i = 0; i<currentMealDetails.data.length; i++){
+  
     document.querySelector("table").innerHTML +=`
+    
     <tr>
     <td>${currentMealDetails.data[i].ingredient}</td>
     <td>${currentMealDetails.data[i].measure}</td>
