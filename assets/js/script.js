@@ -5,8 +5,9 @@ let calcCaloriesBtn = document.getElementById('calculate-calories');
 let saveRecipesBtn = document.getElementById('save-recipes');
 let showRecipeBtn = document.getElementById('show-recipe');
 let mealDropdown = document.getElementById('dropdown');
-let recipeName = document.querySelector(".card-title");
+let recipeTitleEl = document.querySelector(".card-title");
 let ingredientList = document.querySelector(".collection");
+let ingredientsEl = document.querySelectorAll(".collection-item");
 var requestUrl2 = `https://api.edamam.com/api/nutrition-data?app_id=bf8b57b9&app_key=ed2c6d2b951714d94592330e1ad66fd2&nutrition-type=cooking&ingr=egg`;
 let recipeHistory = JSON.parse(localStorage.getItem("recipes")) || [];
 
@@ -20,7 +21,6 @@ saveRecipesBtn.addEventListener("click", function () {
     localStorage.setItem("recipes", JSON.stringify(recipeHistory));
 })
 
-var apiKey = 'PmYKMh41zdKaVKHl5skTd8vvNpf065hiw6dkL8RV';
 let results = new Array;
 var results1 = new Array;
 
@@ -31,7 +31,7 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=a`)
     .then(function (data) {
         console.log(data);
         results = (data.meals);
-        console.log(results);
+        console.log(results);       
     });
 
 fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
@@ -43,8 +43,11 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
         results1 = (data.meals);
 
         let totalResults = results.concat(results1);
+
+        console.log(totalResults);
         console.log(results);
         console.log(totalResults)
+
         showMeals(totalResults);
     });
 
@@ -79,7 +82,7 @@ let configuredData = []
 
     mealDropdown.innerHTML = "";
     for (let i = 0; i < results.length; i++) {
-
+        
         mealDropdown.innerHTML += `<a class="collection-item" measure1="${results[i].strMeasure1}" ingredient1="${results[i].strIngredient1}">${results[i].strMeal}</a>`
 
     }
@@ -87,10 +90,24 @@ let configuredData = []
 }
 
 
-
-collections.addEventListener("click", function(e) {
+// the measure and ingredient are being stored as an attribute to the meal name.
 
 mealDropdown.addEventListener("click", function(e) {
+
+    // recipeTitleEl.textContent = "";
+    // let recipeName = document.createElement('h4'); 
+    // recipeName.textContent = data.strMeal;
+    // recipeTitleEl.append(recipeName);
+    // 
+    // for (i = 0; i < ingredientsEl.length; i++) {
+
+    //     ingredientsEl[i].textContent = "";
+    //     let ingredient = document.createElement('li');
+    //     ingredient.textContent = data.strIngredient[i];
+    // } 
+
+
+
 
     let measure = e.target.getAttribute("measure1");
     measure = measure.replace(" ","%20");
@@ -105,6 +122,11 @@ mealDropdown.addEventListener("click", function(e) {
     fetch(requestUrl2)
     .then(resp => resp.json())
     .then(data => showTable(data))
+
+})
+
+calcCaloriesBtn.addEventListener("click", function () {
+
 })
 
 function showTable(data){
@@ -113,8 +135,9 @@ console.log(data);
 tableBody.innerHTML=""
 tableBody.innerHTML+=`
 <tr>
-<td>${data.totalNutrients.CHOCDF.quantity}</td>
+<td>${data.totalWeight}</td>
 <td>${data.totalNutrients.CHOCDF.unit}</td>
+<td>${data.ingredients[0].text}</td>
 <td>${data.calories}</td>
 </tr>
 `
