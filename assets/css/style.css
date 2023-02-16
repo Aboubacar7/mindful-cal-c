@@ -48,6 +48,7 @@ ul li:hover ul.dropdown {
     height: 300px;
     overflow: auto;
 }
+<<<<<<< HEAD
   
 .ingredients-table {
     margin: 2em;
@@ -61,4 +62,15 @@ ul li:hover ul.dropdown {
 
 .show {
     display: contents;
+=======
+
+#recipe-instructions {
+    height: 300px;
+    overflow: auto;
+}
+
+.ingredients-table {
+    margin: 2em;
+    margin-top: 1em;
+>>>>>>> 531fff327acf70b1624f3ac4a1d13355e27c9418
 }
