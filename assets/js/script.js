@@ -13,12 +13,6 @@ let recipeHistory = JSON.parse(localStorage.getItem("recipes")) || [];
 
 let tableBody = document.getElementById("tableBody");
 
-showRecipeBtn.addEventListener("click", function () {
-    let recipeCard = document.querySelector(".recipe-card");
-    recipeCard.removeAttribute("hide");
-
-})
-
 saveRecipesBtn.addEventListener("click", function () {
     localStorage.setItem("recipes", JSON.stringify(recipeHistory));
 })
@@ -33,7 +27,6 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=a`)
     .then(function (data) {
         console.log(data);
         results = (data.meals);
-        console.log(results);
     });
 
 fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
@@ -45,10 +38,6 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
         results1 = (data.meals);
 
         let totalResults = results.concat(results1);
-
-        console.log(totalResults);
-        console.log(results);
-        console.log(totalResults)
 
         showMeals(totalResults);
     });
@@ -65,8 +54,8 @@ function showMeals(results) {
 
         let obj = { meal: results[i].strMeal }
         for (let y = 0; y < 20; y++) {
-            if (results[i][`strMeasure${y}`] && results[i][`strIngredient${y}`]) {
-                let obj = { measure: results[i][`strMeasure${y}`], ingredient: results[i][`strIngredient${y}`] }
+            if (results[i][`strMeasure${y}`] && results[i][`strIngredient${y}`] && results[i][`strInstructions`]) {
+                let obj = { measure: results[i][`strMeasure${y}`], ingredient: results[i][`strIngredient${y}`], recipe: results[i][`strInstructions`] }
                 configuredData.push(obj)
             }
         }
@@ -81,7 +70,7 @@ function showMeals(results) {
 mealDropdown.addEventListener("click", function (event) {
     console.log(event.target.innerHTML);
 
-    var currentMeal = event.target.innerText;
+    currentMeal = event.target.innerText;
     currentMealDetails = "";
 
     recipeTitleEl.textContent = "";
@@ -139,3 +128,10 @@ function showTable(data) {
     `
     }
 }
+
+showRecipeBtn.addEventListener("click", function () {
+    console.log(currentMealDetails.data[0].recipe);
+    
+    document.querySelector('#recipe-instructions').innerHTML = "";
+    document.querySelector('#recipe-instructions').innerHTML = `<p>${currentMealDetails.data[0].recipe}</p>`;
+})
