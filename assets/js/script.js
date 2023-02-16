@@ -1,4 +1,3 @@
-
 let totalArray = []
 
 let calcCaloriesBtn = document.getElementById('calculate-calories');
