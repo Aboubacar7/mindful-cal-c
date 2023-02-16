@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,8 +21,6 @@
 
     <main class="container-fluid">
         <div id="content" class="row">
-
-
             <div class="col s6">
                 <!-- Meal List -->
                 <ul>
@@ -31,35 +30,30 @@
                         </ul>
                     </li>
                 </ul>
-
                 <!-- Meal List Card -->
                 <div class="meal-list card small">
                     <div class="white">
-                        <div class="card-title center-align">
-                        </div>
-                    <table>
-
-                    </table>
-
+                        <div class="card-title center-align"></div>
+                        <table></table>
                     </div>
                 </div>
-
+                <!-- Recipe instructions are displayed here -->
                 <div id="meal-id" class="recipe-card card small">
                     <div class="white">
-                        <div id="recipe-instructions" class="card-title center-align">
-                        </div>
+                        <div id="recipe-instructions" class="card-title center-align"></div>
                     </div>
                 </div>
             </div>
-
             <div class="col s6">
-               <div class="section">
-                    <a id="calculate-calories" class="waves-effect waves-light btn">
-                        Calculate Calories</a>
-                        <a id="show-recipe" class="waves-effect waves-light btn">Show me the recipe!</a>
-                        <a id="save-recipes" class="waves-effect waves-light btn">Save Recipe</a>
+                <div class="section">
+                    <!-- Calculate coloreis button -->
+                    <a id="calculate-calories" class="waves-effect waves-light btn">Calculate Calories</a>
+                    <!-- Display the recipe button -->
+                    <a id="show-recipe" class="waves-effect waves-light btn">Show me the recipe!</a>
+                    <!-- Save recipe button interacts with local storage -->
+                    <a id="save-recipes" class="waves-effect waves-light btn">Save Recipe</a>
                 </div>
-
+                <!-- Ingredients are displayed in this table -->
                 <table class="ingredients-table striped">
                     <thead>
                         <tr>
@@ -72,10 +66,8 @@
                     <tbody id="tableBody">
                     </tbody>
                 </table>
-<div class = "savedReceipts" id="savedReceipts">
-
-
-</div>
+                <!-- Saved recipes buttons go here -->
+                <div class="savedReceipts" id="savedReceipts"></div>
             </div>
         </div>
     </main>
