@@ -11,10 +11,8 @@ var requestUrl2 = `https://api.edamam.com/api/nutrition-data?app_id=bf8b57b9&app
 let recipeHistory = JSON.parse(localStorage.getItem("recipes")) || [];
 
 let tableBody = document.getElementById("tableBody");
+let savedReceiptsEl = document.getElementById("savedReceipts");
 
-saveRecipesBtn.addEventListener("click", function () {
-    localStorage.setItem("recipes", JSON.stringify(recipeHistory));
-})
 
 let results = new Array;
 var results1 = new Array;
@@ -43,7 +41,7 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
 
 
 function showMeals(results) {
-
+ showSavedRecipes()
     let configuredData = [];
 
     mealDropdown.innerHTML = "";
@@ -88,8 +86,8 @@ mealDropdown.addEventListener("click", function (event) {
     for (let i = 0; i < currentMealDetails.data.length; i++) {
         document.querySelector("table").innerHTML += `
     <tr>
-    <td>${currentMealDetails.data[i].measure}</td>
-    <td>${currentMealDetails.data[i].ingredient}</td>
+        <td>${currentMealDetails.data[i].measure}</td>
+        <td>${currentMealDetails.data[i].ingredient}</td>
     </tr>
     `
     }
@@ -133,4 +131,24 @@ showRecipeBtn.addEventListener("click", function () {
     
     document.querySelector('#recipe-instructions').innerHTML = "";
     document.querySelector('#recipe-instructions').innerHTML = `<p>${currentMealDetails.data[0].recipe}</p>`;
+})
+saveRecipesBtn.addEventListener("click", function () {
+    if (!recipeHistory.includes(currentMealDetails.meal)){
+
+    
+    recipeHistory.push(currentMealDetails);
+    localStorage.setItem("recipes", JSON.stringify(recipeHistory));
+    showSavedRecipes();
+    }});
+function showSavedRecipes(){
+    savedReceiptsEl.innerHTML="<ul>"
+    for (let i=0;i<recipeHistory.length;i++){
+         savedReceiptsEl.innerHTML += `<li><a href="#" data-attr="${recipeHistory[i].data[0].recipe}"> ${recipeHistory[i].meal}</a></li>`
+    };
+    savedReceiptsEl.innerHTML+="</ul>"
+}
+
+savedReceiptsEl.addEventListener("click", function(e){
+    document.querySelector('#recipe-instructions').innerHTML = "";
+    document.querySelector('#recipe-instructions').innerHTML = e.target.getAttribute("data-attr");
 })
