@@ -5,7 +5,7 @@ let saveRecipesBtn = document.getElementById('save-recipes');
 let showRecipeBtn = document.getElementById('show-recipe');
 let mealDropdown = document.getElementById('dropdown');
 let recipeTitleEl = document.querySelector(".card-title");
-let ingredientList = document.querySelector(".collection");
+let calorieTable = document.querySelector(".ingredients-table");
 let ingredientsEl = document.querySelectorAll(".collection-item");
 let recipeHistory = JSON.parse(localStorage.getItem("recipes")) || [];
 let tableBody = document.getElementById("tableBody");
@@ -92,12 +92,16 @@ mealDropdown.addEventListener("click", function (event) {
     `
     }
 
+    calcCaloriesBtn.classList.remove("hide");
+    showRecipeBtn.classList.remove("hide");
+    
     console.log(currentMealDetails)
 })
 
 // Loops through the selected recipe's measurements and ingredients and passes it thought the second API to display on the webpage table
 calcCaloriesBtn.addEventListener("click", function () {
-
+    calorieTable.classList.remove("hide");
+    
     const ingredientURLs = [];
 
     for (let i = 0; i < currentMealDetails.data.length; i++) {
@@ -135,6 +139,9 @@ showRecipeBtn.addEventListener("click", function () {
     
     document.querySelector('#recipe-instructions').innerHTML = "";
     document.querySelector('#recipe-instructions').innerHTML = `<p>${currentMealDetails.data[0].recipe}</p>`;
+
+    saveRecipesBtn.classList.remove("hide");
+    document.querySelector('#meal-id').classList.remove("hide");
 })
 
 // saves the selected recipe in local storage and calls on the next function that displays the saved recipes
@@ -148,13 +155,15 @@ saveRecipesBtn.addEventListener("click", function () {
 
 function showSavedRecipes(){
     savedReceiptsEl.innerHTML="<ul>"
-    for (let i=0;i<recipeHistory.length;i++){
-         savedReceiptsEl.innerHTML += `<li><a href="#" data-attr="${recipeHistory[i].data[0].recipe}"> ${recipeHistory[i].meal}</a></li>`
+
+    for (let i = 0; i < recipeHistory.length;i++) {
+         savedReceiptsEl.innerHTML += `<li><a href="#" data-attr="${recipeHistory[i].data[0].recipe}">${recipeHistory[i].meal}</a></li>`
     };
+    
     savedReceiptsEl.innerHTML+="</ul>"
 }
 
-savedReceiptsEl.addEventListener("click", function(e){
+savedReceiptsEl.addEventListener("click", function(e) {
     document.querySelector('#recipe-instructions').innerHTML = "";
     document.querySelector('#recipe-instructions').innerHTML = e.target.getAttribute("data-attr");
 })

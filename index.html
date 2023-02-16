@@ -26,7 +26,7 @@
                 <ul>
                     <li><a href="#">Select a Meal<i class="material-icons right">arrow_drop_down</i></a>
                         <ul id="dropdown" class="dropdown">
-                            <li><a href="#">Meal</a></li>
+                            <li><a href="#"></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <!-- Recipe instructions are displayed here -->
-                <div id="meal-id" class="recipe-card card small">
+                <div id="meal-id" class="recipe-card card small hide">
                     <div class="white">
                         <div id="recipe-instructions" class="card-title center-align"></div>
                     </div>
@@ -47,14 +47,14 @@
             <div class="col s6">
                 <div class="section">
                     <!-- Calculate coloreis button -->
-                    <a id="calculate-calories" class="waves-effect waves-light btn">Calculate Calories</a>
+                    <a id="calculate-calories" class="waves-effect waves-light btn hide">Calculate Calories</a>
                     <!-- Display the recipe button -->
-                    <a id="show-recipe" class="waves-effect waves-light btn">Show me the recipe!</a>
+                    <a id="show-recipe" class="waves-effect waves-light btn hide">Show me the recipe!</a>
                     <!-- Save recipe button interacts with local storage -->
-                    <a id="save-recipes" class="waves-effect waves-light btn">Save Recipe</a>
+                    <a id="save-recipes" class="waves-effect waves-light btn hide">Save Recipe</a>
                 </div>
                 <!-- Ingredients are displayed in this table -->
-                <table class="ingredients-table striped">
+                <table class="ingredients-table striped hide">
                     <thead>
                         <tr>
                             <th>Quantity</th>
@@ -67,7 +67,7 @@
                     </tbody>
                 </table>
                 <!-- Saved recipes buttons go here -->
-                <div class="savedReceipts" id="savedReceipts"></div>
+                <div class="savedReceipts center-align" id="savedReceipts"></div>
             </div>
         </div>
     </main>
