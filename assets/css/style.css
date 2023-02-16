@@ -57,3 +57,33 @@ ul li:hover ul.dropdown {
     margin: 2em;
     margin-top: 1em;
 }
+
+.hide {
+    padding: 1px;
+}
+
+.savedReceipts {
+    margin-left: 50px;
+}
+
+.savedReceipts li {
+    list-style: none;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.savedReceipts li a {
+    list-style: none;
+    display: block;
+    padding: 10px 10px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    background: rgb(63, 236, 170);
+    width: 300px;
+}
+
+.savedReceipts li a:hover {
+    background: rgba(63, 236, 170, 0.407);
+}
